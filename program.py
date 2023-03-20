@@ -2,7 +2,9 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error,mean_absolute_error
+
 furninsh_columns=['Gasconnection', 'AC', 'BED', 'TV', 'DiningTable', 'Sofa']
+
 def furnishingRoom(row):
     furnish=furninsh_columns
     semi_furnish=['BED','Gasconnection']
@@ -23,24 +25,21 @@ def furnishingRoom(row):
         if(row[item]==9):
             row[item]=2
     return row
+
 maxAmt=10**6
+
 areaMax=10**3
-df=pd.read_csv("Bangalore.csv")
+
+df=pd.read_csv("../Dataset/Bangalore.csv")
 
 df=df.apply(furnishingRoom,axis=1)
 
-
 df.drop(['Location','MaintenanceStaff','Wardrobe','Refrigerator','GolfCourse','Microwave','WashingMachine','JoggingTrack','RainWaterHarvesting','ShoppingMall','Intercom','School','VaastuCompliant','StaffQuarter','Cafeteria','Hospital',"Children'splayarea",'Wifi','Resale','MultipurposeRoom']+furninsh_columns,axis=1,inplace=True)
 
-print(df.columns.tolist())
-# print(df['furnishing'].value_counts())
-# y,X=df['Price'],df.drop(['Price'],axis=1)
-
-# y=y/(maxAmt)
-# X['Area']=X['Area']/areaMax
-
 df['Area']/=areaMax
+
 df['Price']/=maxAmt
 
 df.to_csv("output.csv",index=False)
 
+print("Dataset Pre Process")
