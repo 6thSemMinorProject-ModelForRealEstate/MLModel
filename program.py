@@ -12,13 +12,13 @@ def furnishingRoom(row):
     for item in furnish:
         if(row[item]!=1):
             break
-    else:
-        furnish_status=2
+        else:
+            furnish_status=2
     for item in semi_furnish:
         if(row[item]!=1):
             break
-    else:
-        furnish_status=max(furnish_status,1)
+        else:
+            furnish_status=max(furnish_status,1)
     row['furnishing']=furnish_status
     vals=['ATM','SwimmingPool','Gymnasium','LandscapedGardens','LiftAvailable','IndoorGames','SportsFacility','ClubHouse','24X7Security','PowerBackup']
     for item in vals:
