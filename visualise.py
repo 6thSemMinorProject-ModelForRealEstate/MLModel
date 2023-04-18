@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import pickle
 import pandas as pd
-data=pd.read_csv("dataset.csv")
-plt.xlabel("Room Size")
-plt.ylabel("Property Value")
-plt.title("Room Size Vs Property Value")
-plt.scatter(data['room_size'], data['property_value'], marker='o')
+final_data=pd.read_csv("../MLdataset/final_dataset.csv")
+
+
+plt.xlabel("Area")
+plt.ylabel("City")
+plt.title("Area Vs City")
+plt.scatter(final_data['Area'], final_data['City'], marker='o')
 plt.show()

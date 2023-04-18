@@ -3,15 +3,7 @@ import numpy as np
 import json
 
 if __name__=="__main__":
-    df=pd.read_csv("../MLdataset/final_dataset.csv")
-
-    # print(df.columns.tolist())
-
-
-    # location=df[['Location',"City_name"]].drop_duplicates(keep="first")
-
-    # location.to_csv("../MLdataset/location.csv",index=False)
-
+    df=pd.read_csv("../MLdataset/collectDataset.csv")
     location=df['Location'].unique().tolist()
 
     location_dict={}
@@ -30,6 +22,8 @@ if __name__=="__main__":
             
     df=df.apply(handleLocation,axis=1)
 
+    df=df[['Area',"Location","City","Price"]]
+
     print(df.columns.to_list())
 
-    # df.to_csv("../MLdataset/dataset.csv",index=False)
+    df.to_csv("../MLdataset/final_dataset.csv",index=False)
